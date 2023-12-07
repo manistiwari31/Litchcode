@@ -1,10 +1,9 @@
 func largestOddNumber(num string) string {
-    index := -1
-    for i,u := range num {
-        e := string(u)
-        if e == "1" || e == "3" || e == "5" || e == "7" || e == "9" {
-            index = i
-        }
+    for i := len(num) - 1; i >= 0; i-- {
+      if (num[i] - '0') % 2 != 0 {
+        return num[:i+1]
+      }
     }
-    return num[:index+1]
+
+    return ""
 }
