@@ -1,16 +1,15 @@
 func transpose(matrix [][]int) [][]int {
-    r, c := len(matrix), len(matrix[0])
-    
-    res := make([][]int, c)
-    for rid := 0; rid < c; rid++ {
-        res[rid] = make([]int, r)
+    m:=len(matrix)
+    n:=len(matrix[0])
+    arr:=make([][]int,n)
+    for i:=0;i<n; i++{
+        arr[i]=make([]int,m)
     }
-
-    for rid := 0; rid < r; rid++ {
-        for cid := 0; cid < c; cid++ {
-            res[cid][rid] = matrix[rid][cid]
+    for i:=0; i<m; i++ {
+        for j:=0; j<n; j++{
+            arr[j][i]=matrix[i][j]
+           
         }
-    }
-    
-    return res
+    } 
+    return arr
 }
