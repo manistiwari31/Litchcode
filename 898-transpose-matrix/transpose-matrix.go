@@ -6,8 +6,8 @@ func transpose(matrix [][]int) [][]int {
         res[i]=make([]int,m)
     }
     for i, val := range(matrix){
-           for j, v := range(val){
-               res[j][i] = v
+           for j, _ := range(val){
+               res[j][i] = matrix[i][j]
            }
         }
     return res       
