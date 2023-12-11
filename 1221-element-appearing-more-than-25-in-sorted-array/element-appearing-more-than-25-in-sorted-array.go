@@ -1,21 +1,18 @@
 func findSpecialInteger(arr []int) int {
-    return  findAndCount(arr)
-}
-
-func findAndCount(num []int) int {
+    
     max := 0
     res := 0
-    n := len(num)
+    n := len(arr)
     for n>0{
         c:= 0
-    for _, ele :=range(num){
-        if num[n-1]==ele{
+    for _, ele :=range(arr){
+        if arr[n-1]==ele{
             c++
         }
     }
     if max<c{
         max = c
-        res = num[n-1]
+        res = arr[n-1]
     }
     n--
     }
