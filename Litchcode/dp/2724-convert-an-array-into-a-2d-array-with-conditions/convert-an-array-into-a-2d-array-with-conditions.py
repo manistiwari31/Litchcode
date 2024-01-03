@@ -13,6 +13,5 @@ class Solution:
             for key, value in count.items():
                 if value>l:
                     li.append(key)
-            if len(li)>0:
-                ans.append(li)
+            ans.append(li)
         return ans
