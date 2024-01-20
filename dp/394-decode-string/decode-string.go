@@ -10,8 +10,8 @@ func decodeString(s string) string {
 				subStr = string(stack[len(stack)-1]) + subStr
 				stack = stack[:len(stack)-1] // pop
 			}
-			fmt.Printf("substr=%v\n", subStr)
-
+		
+        
 			stack = stack[:len(stack)-1] // pop'['
 
 			numStr := ""
@@ -19,8 +19,7 @@ func decodeString(s string) string {
 				numStr =  string(stack[len(stack)-1]) + numStr
 				stack = stack[:len(stack)-1] // pop
 			}
-			fmt.Printf("numStr=%v\n", numStr)
-
+			
 			num, _ := strconv.Atoi(numStr)
 			for num > 0 {
 				stack = append(stack, []rune(subStr)...)
