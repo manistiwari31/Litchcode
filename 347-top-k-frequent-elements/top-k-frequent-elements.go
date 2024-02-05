@@ -1,37 +1,32 @@
 func topKFrequent(nums []int, k int) []int {
-    m := make(map[int]int)
-    for _, val := range nums {
-        m[val] = m[val]+1
-    }
-    pq := make([]Item, k)
-    i := 0
-    for key, val := range m {
-        if i<len(pq) {
-            pq[i] = Item{value: key, count: val}
-            i++
-        } else {
-            min := math.MaxInt32
-            minInd := -1
-            for j, v := range pq {
-                if v.count < min {
-                    min = v.count
-                    minInd = j
-                }
-            }
-            if val > min {
-                pq[minInd] = Item{value: key, count: val}
-            }
-        }
-    }
-    sort.Slice(pq, func(i, j int) bool { return pq[i].count > pq[j].count })
-    res := make([]int, k)
-    for j, v := range pq {
-        res[j] = v.value
-    }            
-    return res
-}
-
-type Item struct {
-	value int 
-	count int   
+	valueMap := make(map[int][]int)
+	hashMap := make(map[int]int)
+	for i := 0; i < len(nums); i++ {
+		if tt, vv := hashMap[nums[i]]; vv {
+			hashMap[nums[i]] = tt + 1
+			continue
+		}
+		hashMap[nums[i]] = 1
+	}
+	for kk, v := range hashMap {
+		valueMap[v] = append(valueMap[v], []int{kk}...)
+	}
+	valueList := make([]int, 0)
+	result := make([]int, 0)
+	count := k
+	keys := make([]int, 0)
+	for k, _ := range valueMap {
+		keys = append(keys, k)
+	}
+	sort.Ints(keys)
+	for _, v := range keys {
+		valueList = append(valueList, valueMap[v]...)
+	}
+	for i := len(valueList) - 1; i >= 0; i-- {
+		if count > 0 {
+			result = append(result, valueList[i])
+		}
+		count--
+	}
+	return result
 }
