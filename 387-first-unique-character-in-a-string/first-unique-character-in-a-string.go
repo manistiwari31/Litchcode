@@ -1,17 +1,17 @@
 func firstUniqChar(s string) int {
-    countMap := map[rune]int{}
+	freq := make([]int, 26)
 
-    // Count occurrences of each character
-    for _, t := range s {
-        countMap[t]++
-    }
+	// Count occurrences of each character
+	for _, ch := range s {
+		freq[ch-'a']++
+	}
 
-    // Find the first unique character
-    for i, t := range s {
-        if countMap[t] == 1 {
-            return i
-        }
-    }
+	// Find the first unique character
+	for i, ch := range s {
+		if freq[ch-'a'] == 1 {
+			return i
+		}
+	}
 
-    return -1
+	return -1
 }
