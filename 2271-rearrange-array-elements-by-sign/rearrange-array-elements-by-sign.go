@@ -1,21 +1,16 @@
 func rearrangeArray(nums []int) []int {
-    var neg []int
-    var pos []int
+        results := make([]int, len(nums))
 
-    for _, i := range nums {
-        if i>0 {
-            neg = append(neg, i)
-        } else {
-            pos = append(pos, i)
+        posIdx, negIdx := 0, 1
+        for _, num := range nums {
+                if num > 0 {
+                        results[posIdx] = num
+                        posIdx += 2
+                } else {
+                        results[negIdx] = num
+                        negIdx += 2
+                }
         }
-    }
-    var res []int
-    for i := range pos {
-        res = append(res, neg[i])
-        res = append(res,pos[i])
-     
-    }
 
-
-    return res
+        return results
 }
